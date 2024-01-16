@@ -49,7 +49,7 @@ const Home = () => {
                         severity="success"
                         className="alert fixed top-0"
                     >
-                        Downloading will be start soon...
+                        Downloading will be started soon...
                     </Alert>
                 )}
                 {isError && (
