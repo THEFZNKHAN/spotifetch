@@ -1,13 +1,66 @@
-import React from "react";
+import React, { useState } from "react";
+import Alert from "@mui/material/Alert";
+import axios from "axios";
 
 const Home = () => {
-    const handleChange = () => {};
+    const [url, setUrl] = useState("");
+    const [isDownloading, setIsDownloading] = useState(false);
+    const [isError, setIsError] = useState(false);
 
-    const handleSubmit = () => {};
+    const hideAlerts = () => {
+        setTimeout(() => {
+            setIsDownloading(false);
+            setIsError(false);
+        }, 2000);
+    };
+
+    const getShortURL = (fullURL) => {
+        const urlParts = fullURL.trim().split("/");
+        const shortURL = urlParts[urlParts.length - 1];
+        return shortURL;
+    };
+
+    const handleChange = (e) => {
+        setUrl(e.target.value);
+    };
+
+    const handleSubmit = async () => {
+        try {
+            const shortURL = getShortURL(url);
+            const response = await axios.get(
+                `https://lemonic.viperadnan.com/api/track/${shortURL}`
+            );
+            const { url: redirectUrl } = response.data;
+            window.location.href = redirectUrl;
+            setIsDownloading(true);
+            hideAlerts();
+        } catch (error) {
+            setIsError(true);
+            hideAlerts();
+        }
+    };
 
     return (
         <div className="bg-slate-900 h-screen">
             <div className="container flex flex-col justify-center items-center">
+                {isDownloading && (
+                    <Alert
+                        variant="filled"
+                        severity="success"
+                        className="alert fixed top-0"
+                    >
+                        Downloading will be start soon...
+                    </Alert>
+                )}
+                {isError && (
+                    <Alert
+                        variant="filled"
+                        severity="error"
+                        className="alert fixed top-0"
+                    >
+                        Error occurred. Please try again later.
+                    </Alert>
+                )}
                 <div className="m-10 py-4 px-16 rounded-xl bg-white text-center border-4 border-green-900">
                     <h1 className="text-3xl text-green-600 font-bold font-mono">
                         Download Spotify Songs
