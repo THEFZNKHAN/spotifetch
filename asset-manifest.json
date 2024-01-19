@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/spotifetch/static/css/main.1a759144.css",
+    "main.js": "/spotifetch/static/js/main.711d8866.js",
+    "index.html": "/spotifetch/index.html",
+    "main.1a759144.css.map": "/spotifetch/static/css/main.1a759144.css.map",
+    "main.711d8866.js.map": "/spotifetch/static/js/main.711d8866.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1a759144.css",
+    "static/js/main.711d8866.js"
+  ]
+}
