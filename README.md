@@ -1,5 +1,7 @@
 # SpotiFetch
 
+![image](https://github.com/THEFZNKHAN/spotifetch/assets/124388165/a827839e-ea81-46cd-9d5c-db7d34c843db)
+
 ## Overview
 This web application allows users to download Spotify songs by pasting the song URL.
 
